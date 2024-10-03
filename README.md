@@ -2,26 +2,6 @@
 
 These guidelines outline the rules and best practices to follow when contributing to this Next.js project. Adherence to these will help maintain code quality and project consistency.
 
-## Commit Message Guidelines
-
-### Major Release
-
-- **Assumed current version**: `0.x.x`
-- **Next major version**: `1.x.x`
-- **Format**: `major 1.x.x | description summary`
-
-### Hot-Fixes
-
-- **Assumed current version**: `x.x.3`
-- **Next fix version**: `x.x.4`
-- **Format**: `fix x.x.4 | description summary`
-
-### Minor Release or Feature Addition
-
-- **Assumed current version**: `x.4.x`
-- **Next minor version**: `x.5.x`
-- **Format**: `minor x.5.x | description summary`
-
 ## Exports
 
 ### Default Export
@@ -91,7 +71,7 @@ Organize files and folders logically to maintain clarity. Here's a recommended p
 ```plaintext
 src/
 └── components/ # Reusable components
-└── pages/ # Next.js pages
+└── app/ # Next.js pages
 └── styles/ # CSS/styling files
 └── utils/ # Utility functions
 └── hooks/ # Custom hooks
@@ -131,6 +111,26 @@ tests/
 
 We follow a structured Git workflow to ensure smooth collaboration and maintain a clean history.
 
+### Commit Message Guidelines
+
+#### Major Release
+
+- **Assumed current version**: `0.x.x`
+- **Next major version**: `1.x.x`
+- **Format**: `major 1.x.x | description summary`
+
+#### Hot-Fixes
+
+- **Assumed current version**: `x.x.3`
+- **Next fix version**: `x.x.4`
+- **Format**: `fix x.x.4 | description summary`
+
+#### Minor Release or Feature Addition
+
+- **Assumed current version**: `x.4.x`
+- **Next minor version**: `x.5.x`
+- **Format**: `minor x.5.x | description summary`
+
 ### Branching Strategy
 
 1. **Main Branch**:
@@ -154,12 +154,6 @@ We follow a structured Git workflow to ensure smooth collaboration and maintain 
    - Name format: `hotfix/<description>`
    - Used for critical bug fixes in production.
    - Merged directly into both `main` and `develop`.
-
-5. **Release Branches**:
-   - Name format: `release/x.x.x`
-   - Created when preparing for a new production release.
-   - Focus on final testing and minor bug fixes.
-   - Merged into both `main` and `develop`.
 
 ### Pull Requests (PRs)
 
