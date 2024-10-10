@@ -8,7 +8,7 @@ export const useDB = async () => {
   const sample = await client.from("users").insert({
     user_id: 0,
     username: "victor",
-    email: "ops.glipse.tech",
+    email: 1,
   });
   return sample;
 };
