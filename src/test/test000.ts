@@ -8,24 +8,28 @@ export default async () => {
   );
   console.log(worker);
 
-  const op1 = await worker.from("migrations_order").insert({
-    user_id: 0,
-    order_id: 12,
-    migration_title: "Test Migration 1",
-    comment: "first test here",
-    status: 1,
+  const user = await worker.from("users").insert({
+    username: "rupam",
+    email: "test@gmail.com",
   });
-  console.log(op1);
+  console.log(user);
 
-  const order = await worker.from("order_list").insert({
-    order_id: 12,
-    user_id: 0,
-  });
-  console.log(order);
+  // const migration_order = await worker.from("migrations_order").insert({
+  //   user_id: 5,
+  //   // order_id: 12,
+  //   migration_title: "Test Migration 1",
+  //   comment: "first test here",
+  //   status: 1,
+  // });
+  // console.log(migration_order);
 
-  const op = await worker.from("files").insert({
-    order_id: 12,
-    files: "string",
-  });
-  console.log(op);
+  // const ticket = await worker.from("tickets").insert({
+  //   order_id: 6,
+  //   user_id: 4,
+  //   ticket_status: 2,
+  //   ticket_communication: { "": "" },
+  //   ticket_desc: "Desc",
+  // });
+
+  // console.log(ticket);
 };
