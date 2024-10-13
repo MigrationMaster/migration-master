@@ -4,6 +4,8 @@ import React, { useState } from "react";
 // import { useEffect } from "react";
 import test000 from "@/test/test.insert.supabase";
 import test001 from "@/test/test.get";
+import upd from "@/lib/db/storage/upload";
+
 // import Image from "next/image";
 // import { useState } from "react";
 
@@ -14,17 +16,19 @@ export default function Home() {
   // useEffect(() => {
   //   query.then((value) => console.log(value));
   //   // console.log(query);
-  const [data, setData] = useState<
-    | {
-        email: string;
-        last_login: string | null;
-        user_id: string;
-        username: string;
-      }[]
-    | null
-  >();
+  // const [data, setData] = useState<
+  //   | {
+  //       email: string;
+  //       last_login: string | null;
+  //       user_id: string;
+  //       username: string;
+  //     }[]
+  //   | null
+  // >();
 
   // }, []);
+
+  const [file, SetFile] = useState<File | null>(null);
 
   return (
     <div className="gap flex flex-col">
@@ -32,19 +36,37 @@ export default function Home() {
       <button onClick={test000} className="bg-red-500 shadow-sm">
         click me to test insert
       </button>
-      <br />
+
+      <label htmlFor="file-select"></label>
+      <input
+        type="file"
+        name="select file"
+        id="file-select"
+        onChange={(e) => SetFile(e.target?.files?.[0] as File)}
+        // value={file}
+      />
+
+      <button
+        onClick={() => {
+          upd(file as File);
+        }}
+        className=" shadow-lg"
+      >
+        click me to upload
+      </button>
+
       <button
         onClick={() =>
           test001().then((data) => {
             console.log(data);
-            setData(data.data);
+            // setData(data.data);
           })
         }
         className="bg-red-500 shadow-sm"
       >
         click me to test fetch
       </button>
-      <p>{data?.toString()}</p>
+      {/* <p>{data?.toString()}</p> */}
     </div>
   );
 }
