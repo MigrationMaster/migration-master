@@ -10,10 +10,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@clerk/elements": "^0.19.7",
-    "@clerk/nextjs": "^6.4.1",
-    "@radix-ui/react-label": "^2.1.0",
-    "@radix-ui/react-slot": "^1.1.0",
+    "@clerk/nextjs": "^5.7.2",
     "@supabase/supabase-js": "^2.45.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -35,6 +32,7 @@
     "globals": "^15.10.0",
     "postcss": "^8",
     "prettier": "^3.3.3",
+    "supabase": "^1.204.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "typescript-eslint": "^8.8.0"
