@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <div className="gap flex flex-col">
       <p>yes</p>
-      <button onClick={test000} className="bg-red-500 shadow-sm">
+      {/* <button onClick={test000} className="bg-red-500 shadow-sm">
         click me to test insert
       </button>
 
@@ -65,7 +65,7 @@ export default function Home() {
         className="bg-red-500 shadow-sm"
       >
         click me to test fetch
-      </button>
+      </button> */}
       {/* <p>{data?.toString()}</p> */}
     </div>
   );
