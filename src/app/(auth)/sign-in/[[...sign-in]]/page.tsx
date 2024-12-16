@@ -7,6 +7,10 @@ import Image from "next/image";
 export default function Sign_up() {
   const { isSignedIn } = useUser();
 
+  // I NEED TO VALIDATE THE USERS AT SUPABASE BEFORE ALLOWING DASHBOARD
+
+  // ****** Need to be done *******
+
   if (!isSignedIn) {
     return (
       <div
@@ -30,17 +34,17 @@ export default function Sign_up() {
           </div>
         </div>
         <div className="grid items-center px-4 w-full bg-slate-100 justify-center">
-          <SignIn signUpUrl="/sign-up" />
+          <SignIn signUpUrl="/sign-up" fallbackRedirectUrl={"/dashboard"} />
         </div>
       </div>
     );
   }
 
-  return (
-    <div
-      className={`${styles.gradientBackground} grid w-full grow items-center px-4 sm:justify-center`}
-    >
-      Welcome
-    </div>
-  );
+  // return (
+  //   <div
+  //     className={`${styles.gradientBackground} grid w-full grow items-center px-4 sm:justify-center`}
+  //   >
+  //     Welcome
+  //   </div>
+  // );
 }
