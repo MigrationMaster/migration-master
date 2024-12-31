@@ -88,7 +88,6 @@ export default function Sign_up() {
             signInUrl="/sign-in"
             path="/sign-up"
             fallbackRedirectUrl={"/dashboard"}
-            // after the successful sign up I want send user data to somewhere else automatically. How can I do that?
           />
         </div>
       </div>

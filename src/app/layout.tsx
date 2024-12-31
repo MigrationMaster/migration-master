@@ -3,7 +3,9 @@ import localFont from "next/font/local";
 import React from "react";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { dark } from '@clerk/themes'
+import { dark } from "@clerk/themes";
+import { SidebarProvider, SidebarTrigger } from "@/components/UI/sidebar";
+import AppSidebar from "@/components/UI/design/AppSidebar";
 
 const geistSans = localFont({
   src: "./(fonts)/GeistVF.woff",
@@ -27,14 +29,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider appearance={{baseTheme: dark}} >
+    <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <div></div>
-          {/* <Dashboard></Dashboard> */}
-          {children}
+          <SidebarProvider>
+            <AppSidebar />
+            <main>
+              <SidebarTrigger />
+              {children}
+            </main>
+          </SidebarProvider>
         </body>
       </html>
     </ClerkProvider>
