@@ -3,9 +3,51 @@
 import { useUser, SignIn } from "@clerk/nextjs";
 import styles from "../[[...sign-in]]/styles.module.css";
 import Image from "next/image";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Sign_up() {
-  const { isSignedIn } = useUser();
+  const { isSignedIn, user } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkUserData = async () => {
+      if (!user) return;
+
+      // Build user data
+      const userData = {
+        username: user.username || "Ravi_Default",
+        email:
+          user.emailAddresses.map((email) => email.emailAddress)[0] ||
+          "default_email@gmail.com",
+        id: user.id || "default_id",
+      };
+
+      try {
+        const response = await fetch("/api/users/signin-validation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData),
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.message === "user exists") {
+          router.push("/dashboard");
+        } else if (result.message === "user doesn't exist") {
+          router.push("/sign-in");
+        } else {
+          console.error("Error validating user data.");
+        }
+      } catch (error) {
+        console.error("Error sending user data:", error);
+      }
+    };
+
+    if (isSignedIn) {
+      checkUserData();
+    }
+  }, [isSignedIn, user, router]);
 
   if (!isSignedIn) {
     return (
@@ -30,17 +72,9 @@ export default function Sign_up() {
           </div>
         </div>
         <div className="grid items-center px-4 w-full bg-slate-100 justify-center">
-          <SignIn signUpUrl="/sign-up" />
+          <SignIn signUpUrl="/sign-up" fallbackRedirectUrl={"/dashboard"} />
         </div>
       </div>
     );
   }
-
-  return (
-    <div
-      className={`${styles.gradientBackground} grid w-full grow items-center px-4 sm:justify-center`}
-    >
-      Welcome
-    </div>
-  );
 }
