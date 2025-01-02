@@ -89,7 +89,7 @@ export default function FooterNav({
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               {items.items?.map((subItem) => (
-                <a href={subItem.url}>
+                <a href={subItem.url} key={subItem.url}>
                   <DropdownMenuItem
                     key={subItem.title}
                     className="cursor-pointer"
@@ -99,7 +99,6 @@ export default function FooterNav({
                   </DropdownMenuItem>
                 </a>
               ))}
-              {/* <DropdownMenuItem></DropdownMenuItem> */}
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem

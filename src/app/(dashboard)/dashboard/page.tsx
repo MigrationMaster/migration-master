@@ -1,6 +1,12 @@
 import { auth } from "@clerk/nextjs/server";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { SignOutButton } from "@clerk/nextjs";
+
+export const metadata: Metadata = {
+  title: "Dashboard | Migration Master",
+  description:
+    "Dashboard of Migration Master utility where you can easily migrate between your Shopify and WordPress sites",
+};
 
 const Dashboard = async () => {
   // to handle page access to authorized users
