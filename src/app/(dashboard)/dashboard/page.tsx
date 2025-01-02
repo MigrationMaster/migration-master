@@ -10,11 +10,7 @@ const Dashboard = async () => {
     return redirect("/sign-in");
   }
 
-  return (
-    <div>
-      This is our dashboard {userId} <SignOutButton redirectUrl="/sign-in" />{" "}
-    </div>
-  );
+  return <div className="">This is our dashboard {userId}</div>;
 };
 
 export default Dashboard;
